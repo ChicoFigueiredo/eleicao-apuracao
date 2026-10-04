@@ -1,0 +1,12 @@
+[Unit]
+Description=Túnel SSH reverso do Monitor Eleitoral 2026
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/ssh -NT -i /home/chico/.ssh/eleicao_apuracao_tunel -o BatchMode=yes -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o StrictHostKeyChecking=accept-new -R 127.0.0.1:27985:127.0.0.1:27985 tunel-eleicoes@ssh.chico-figueiredo.com.br
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

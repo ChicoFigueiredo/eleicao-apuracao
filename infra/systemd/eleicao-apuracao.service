@@ -1,0 +1,15 @@
+[Unit]
+Description=Monitor Eleitoral 2026
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/mnt/d/Chico/eleicao-apuracao
+Environment=PATH=/home/chico/.local/share/mise/installs/bun/latest/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/home/chico/.local/share/mise/installs/bun/latest/bin/bun run src/cli.ts serve
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

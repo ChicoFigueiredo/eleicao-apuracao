@@ -1,4 +1,6 @@
 import { Database } from "bun:sqlite";
+import { mkdirSync } from "node:fs";
+import { dirname } from "node:path";
 
 export type CandidateReading = {
   tseId: string;
@@ -57,6 +59,7 @@ const percentage = (votes: number, validVotes: number) =>
   validVotes === 0 ? 0 : Math.round((votes / validVotes) * 10_000) / 100;
 
 export const createMonitor = (filename: string): Monitor => {
+  if (filename !== ":memory:") mkdirSync(dirname(filename), { recursive: true });
   const db = new Database(filename);
   db.exec(`
     PRAGMA journal_mode = WAL;
