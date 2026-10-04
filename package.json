@@ -1,0 +1,17 @@
+{
+  "name": "eleicao-apuracao",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun run src/cli.ts serve",
+    "collect": "bun run src/cli.ts collect",
+    "setup": "bun install && bunx playwright install chromium",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.7.0"
+  }
+}
