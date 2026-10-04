@@ -1,0 +1,90 @@
+# Segredos e configuração local
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.htpasswd
+secrets/
+
+# Dependências e ambientes
+node_modules/
+.bun/
+.venv/
+venv/
+env/
+__pypackages__/
+
+# Artefatos de build e cobertura
+dist/
+build/
+out/
+.cache/
+.turbo/
+.eslintcache
+coverage/
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.hypothesis/
+htmlcov/
+.coverage
+.coverage.*
+*.egg-info/
+
+# Banco e dados coletados — nunca versionar dados eleitorais locais
+state/
+data/
+storage/
+*.sqlite
+*.sqlite3
+*.db
+*.db-*
+*.db-wal
+*.db-shm
+
+# Navegadores, perfis e evidências transitórias do Playwright
+playwright/.cache/
+test-results/
+playwright-report/
+blob-report/
+screenshots/
+videos/
+traces/
+*.webm
+
+# Registros e arquivos temporários
+logs/
+*.log
+*.pid
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Serviços locais, chaves e estado do túnel
+infra/local/
+*.service.local
+*.socket.local
+ssh-keys/
+
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
