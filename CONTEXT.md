@@ -37,7 +37,7 @@ Comparação entre a distribuição de cadeiras em exercício na véspera da ele
 _Evitar_: resultado político oficial
 
 **Acesso Protegido**:
-Entrada remota do Monitor Eleitoral por HTTPS, autenticada pelo Nginx com credenciais definidas fora do repositório.
+Entrada remota do Monitor Eleitoral por HTTPS, autenticada pelo Caddy da Borda (basic auth) com credenciais definidas fora do repositório.
 _Evitar_: painel público, login da aplicação
 
 **Leitura Histórica**:

@@ -8,6 +8,7 @@
 *.p12
 *.pfx
 *.htpasswd
+*.auth
 secrets/
 
 # Dependências e ambientes
