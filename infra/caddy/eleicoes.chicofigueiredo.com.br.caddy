@@ -1,0 +1,16 @@
+# eleicoes.chicofigueiredo.com.br → monitor eleitoral, que roda em casa e chega por
+# túnel SSH reverso (porta 27985). Senha em /etc/caddy/segredos/eleicoes-apuracao.auth.
+#
+# Fonte deste arquivo: vps/caddy/sites/ do repositório da VPS (a Borda é o Caddy, ver
+# docs/adr/0004). Para publicar na VPS: infra/caddy/publicar.sh.
+eleicoes.chicofigueiredo.com.br {
+	import log
+
+	route {
+		import senha eleicoes-apuracao "Monitor Eleitoral"
+
+		reverse_proxy 127.0.0.1:27985 {
+			header_up X-Real-IP {remote_host}
+		}
+	}
+}

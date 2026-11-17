@@ -30,3 +30,15 @@ conteúdo versionado. O formato definitivo do arquivo 2026 será ligado ao adapt
 ser publicado pelo TSE.
 
 O desenho do domínio está em [CONTEXT.md](CONTEXT.md) e as decisões duráveis em [docs/adr](docs/adr/).
+
+## Acesso remoto (Borda)
+
+O painel roda em casa e chega à VPS por túnel SSH reverso (`infra/systemd/eleicao-apuracao-tunnel.service`, porta 27985). Quem expõe `eleicoes.chicofigueiredo.com.br` com TLS e senha é o Caddy da Borda da VPS; o Site está em `infra/caddy/eleicoes.chicofigueiredo.com.br.caddy`.
+
+Para publicar ou atualizar o Site, na VPS (checkout deste repo):
+
+```bash
+sudo infra/caddy/publicar.sh
+```
+
+O script copia o `.caddy` para `/etc/caddy/sites/`, roda `caddy validate` e `systemctl reload caddy`. O TLS é emitido pelo Caddy sozinho (HTTP-01), sem certbot. Antes da primeira vez, crie `/etc/caddy/segredos/eleicoes-apuracao.auth` (uma linha `usuario hash-bcrypt`, dono `caddy:caddy`, modo 600); o script mostra o comando se faltar. Ver [ADR 0004](docs/adr/0004-acesso-remoto-protegido-pelo-caddy-da-borda.md).
